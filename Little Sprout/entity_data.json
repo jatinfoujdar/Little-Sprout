@@ -1,0 +1,104 @@
+{
+  "entities": [
+    {
+      "id": "tree",
+      "name": "Tree",
+      "description": "A generic tree.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 100
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura",
+      "description": "A beautiful cherry blossom tree.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 5,
+      "basePrice": 150
+    },
+    {
+      "id": "sunflower",
+      "name": "Sunflower",
+      "description": "A bright sunflower.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 50
+    },
+    {
+      "id": "cedar",
+      "name": "Cedar",
+      "description": "A tall cedar tree.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 60
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender",
+      "description": "Fragrant lavender plant.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 7,
+      "basePrice": 100
+    },
+    {
+      "id": "pink_balls_tree",
+      "name": "Pink Balls Tree",
+      "description": "A tree with pink ball-shaped flowers.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 130
+    },
+    {
+      "id": "maple",
+      "name": "Maple",
+      "description": "A colorful maple tree.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 150
+    },
+    {
+      "id": "wisteria",
+      "name": "Wisteria",
+      "description": "A cascading wisteria vine.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 150
+    },
+    {
+      "id": "weeping_willow",
+      "name": "Weeping Willow",
+      "description": "A graceful weeping willow tree.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 10,
+      "basePrice": 150
+    },
+    {
+      "id": "lit_tree",
+      "name": "Lit Tree",
+      "description": "A christmas tree with lights.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 1,
+      "basePrice": 200
+    },
+    {
+      "id": "weathered",
+      "name": "Weathered Tree",
+      "description": "A tree that has weathered many storms.",
+      "creator": "Nethical",
+      "donate": "https://digipaws.life/donate",
+      "variants": 1,
+      "basePrice": 180
+    }
+  ],
+  "count": 11
+}
