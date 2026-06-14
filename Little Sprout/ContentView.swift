@@ -633,32 +633,34 @@ struct FullScreenGardenSheet: View {
             GeometryReader { geo in
                 IsometricForestView(pngList: gardenVM.pngTreeList)
                     .frame(width: 1200, height: 1200)
-                    .contentShape(Rectangle())
-                    .scaleEffect(scale)
-                    .offset(offset)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                offset = CGSize(
-                                    width: lastOffset.width + value.translation.width,
-                                    height: lastOffset.height + value.translation.height
-                                )
-                            }
-                            .onEnded { _ in
-                                lastOffset = offset
-                            }
-                    )
-                    .simultaneousGesture(
-                        MagnificationGesture()
-                            .onChanged { value in
-                                scale = max(0.5, min(4.0, lastScale * value))
-                            }
-                            .onEnded { _ in
-                                lastScale = scale
-                            }
-                    )
+                    .scaleEffect(scale, anchor: .center)
+                    .offset(x: offset.width + (geo.size.width - 1200) / 2,
+                            y: offset.height + (geo.size.height - 1200) / 2)
             }
+            .contentShape(Rectangle())
+            .clipped()
             .ignoresSafeArea()
+            .gesture(
+                SimultaneousGesture(
+                    DragGesture()
+                        .onChanged { value in
+                            offset = CGSize(
+                                width: lastOffset.width + value.translation.width,
+                                height: lastOffset.height + value.translation.height
+                            )
+                        }
+                        .onEnded { _ in
+                            lastOffset = offset
+                        },
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = max(0.5, min(4.0, lastScale * value))
+                        }
+                        .onEnded { _ in
+                            lastScale = scale
+                        }
+                )
+            )
             
             // HUD overlay widgets
             VStack {
@@ -725,6 +727,43 @@ struct FullScreenGardenSheet: View {
                                 }
                             }
                             .frame(width: 100, height: 60)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    // Bottom-Centre: Zoom Controls
+                    GlassHudWidget(onClose: nil) {
+                        HStack(spacing: 0) {
+                            Button(action: {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                    scale = max(0.5, scale - 0.25)
+                                    lastScale = scale
+                                }
+                            }) {
+                                Text("−")
+                                    .font(.system(size: 22, weight: .light))
+                                    .foregroundColor(scale <= 0.5 ? Color.black.opacity(0.25) : .black)
+                                    .frame(width: 36, height: 36)
+                            }
+                            .disabled(scale <= 0.5)
+                            
+                            Rectangle()
+                                .fill(Color.black.opacity(0.15))
+                                .frame(width: 1, height: 20)
+                            
+                            Button(action: {
+                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                    scale = min(4.0, scale + 0.25)
+                                    lastScale = scale
+                                }
+                            }) {
+                                Text("+")
+                                    .font(.system(size: 22, weight: .light))
+                                    .foregroundColor(scale >= 4.0 ? Color.black.opacity(0.25) : .black)
+                                    .frame(width: 36, height: 36)
+                            }
+                            .disabled(scale >= 4.0)
                         }
                     }
                     
