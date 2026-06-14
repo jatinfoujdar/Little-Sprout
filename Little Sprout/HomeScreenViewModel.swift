@@ -1,3 +1,10 @@
+//
+//  HomeScreenViewModel.swift
+//  Little Sprout
+//
+//  Created by jatin foujdar on 12/06/26.
+//
+
 import Foundation
 import Combine
 
@@ -147,9 +154,14 @@ class HomeScreenViewModel: ObservableObject {
     
     func formatTime(seconds: Double) -> String {
         let totalSecs = Int(seconds)
-        let m = totalSecs / 60
+        let h = totalSecs / 3600
+        let m = (totalSecs % 3600) / 60
         let s = totalSecs % 60
-        return String(format: "%02d:%02d", m, s)
+        if h > 0 {
+            return String(format: "%02d:%02d:%02d", h, m, s)
+        } else {
+            return String(format: "%02d:%02d", m, s)
+        }
     }
     
     func calculateRarity() -> Bool {

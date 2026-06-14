@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AVKit
 
 struct ContentView: View {
     @StateObject private var homeVM = HomeScreenViewModel()
@@ -90,14 +89,7 @@ struct ContentView: View {
                 
                 // Active Tree visual block
                 ZStack {
-                    if homeVM.timerStatus == .running {
-                        TreeGrowthPlayerView(
-                            treeId: homeVM.selectedTree.id,
-                            seed: homeVM.currentTreeSeedVariant,
-                            progress: homeVM.progress
-                        )
-                        .frame(width: 180, height: 180)
-                    } else if homeVM.timerStatus == .hasQuit {
+                    if homeVM.timerStatus == .hasQuit {
                         Image("weathered_0_grid")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
